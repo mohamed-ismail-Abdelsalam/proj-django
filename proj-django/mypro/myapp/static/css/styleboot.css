@@ -1,0 +1,113 @@
+*{
+  font-family: 'Macondo', cursive;
+}
+body{
+  padding-top: 75px;
+}
+.bg-primary {
+    background-color: #00a651!important;
+}
+a {
+    color: var(--bs-link-color);
+    text-decoration: none;
+}
+.b-example-divider {
+    height: 3rem;
+    background-color: rgb(172 102 241);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%), inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
+}
+#foot{
+    padding-left:50px;
+   background-color: #5bccf6 !important;
+    height:380px
+}
+.slide_img{
+  width: 100%;
+  height: 450px;
+}
+#nv{
+    background-color: #5bccf6 !important;
+    }
+.bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgb(172 102 241);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      #icon_nav{
+        border-radius: 50%;
+      }
+.pro{
+  margin-top: 5px;
+  padding-left: 50px;
+}
+#line{
+  font-size: 12px;
+}
+h5{
+  opacity: 0.6;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+/************************** projects section *************/
+.projects_container{
+  margin-left: 50px;
+}
+.project .figure-caption{
+   margin-left: 5px;
+  font-weight: bolder;
+  color: black ;
+    
+}
+.project img{
+    height: 200px;
+    width: 80%;
+}
+.project{
+   overflow: hidden;
+  height: 400px;
+  margin: 20px;
+  border: 3px solid  rgb(234, 239, 227) ;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.project .badge{
+  height: 100px;
+  overflow: hidden;
+  opacity: 0.9;
+  margin:5px 0px;
+}
+.Rate{
+  margin-top: 5px;
+}
+.Rate #Rate{
+  height: 20px;
+  width: 35px;
+}
