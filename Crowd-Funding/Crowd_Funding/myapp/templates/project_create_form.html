@@ -1,0 +1,120 @@
+{%extends 'base.html'%}
+{%block links%}
+  {% load static %}
+  <link rel="stylesheet" href="{%static 'css/project_create.css'%}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css">
+  <link rel="stylesheet" href="{%static 'css/w3s.css'%}">
+  <script src="{%static 'js/project_create.js'%}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+{%endblock%}
+{%block content%}
+  {% load static %}
+  <section class="">
+    <div class="container py-5">
+      <div class="row d-flex justify-content-center align-items-center ">
+        <div class="col">
+          <div class="card card-registration my-4">
+            <div class="row g-0 box">
+              <div class="col-xl-6 d-none d-xl-block">
+                <div class="image-container">
+                    <div class="text">Your home for help</div>
+                </div>
+                <img src="{%static 'images/help.jpg'%}"
+                  alt="Sample photo" class="img-fluid"
+                  style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height:100%;" />
+              </div>
+              <div class="col-xl-6">
+
+                <div class="card-body p-md-5 text-black">
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example8">Title</label>
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" />
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 mb-4 select_container">
+                    <div class="form-outline ">
+                      <label>categories</label>
+                      <select class="form-select " aria-label="Default select ">
+                        <option selected>catrgories</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  
+                    <div class="col-md-6 mb-4 ">
+                      <label>tags</label>
+                      <div class="form-outline">
+                        <input  type="text" value="" data-role="tagsinput" placeholder="Add tags"  id="tags" class="form-control form-control-lg" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row ">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="caverp">caver pict</label>
+                        <input type="file" accept="image/*" id="caverp" class="form-control form-control-lg tag" />
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="txtNumber">totale target</label>
+                        <input type="number" id="txtNumber" class="form-control form-control-lg"  min="10000" max="40000" />
+                        <span id="errorMsg" style="display:none;">you can give totale target 10000 to +40000 only</span>
+                        <!--  on oninput="(!validity.rangeOverflow||(value=40000)) && (!validity.rangeUnderflow||(value=10000)) &&
+                          (!validity.stepMismatch||(value=parseInt(this.value)));" -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="multiple_images">enter your images </label>
+                    <input  type="file" accept="image/*" id="multiple_images" class="form-control form-control-lg" />
+                  </div>
+
+                  <div class="row ">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="form3Example1m">start</label>
+                        <input type="datetime-local" id="form3Example1m" class="form-control form-control-lg tag" />
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="form3Example1n">end</label>
+                        <input type="datetime-local" id="form3Example1n" class="form-control form-control-lg" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="d-flex justify-content-end pt-3">
+                    <button type="button" class="btn btn-light btn-lg">Reset all</button>
+                    <button type="button" class="btn btn-warning btn-lg ms-2">Submit form</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<script>
+  $("#txtNumber" ).keyup(function() {
+  if($('#txtNumber').val()<10000 || $('#txtNumber').val()>40000 ){
+      $('#errorMsg').show();
+  }
+  else{
+    $('#errorMsg').hide();
+  }
+});
+</script>
+{%endblock%}

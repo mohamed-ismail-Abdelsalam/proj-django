@@ -1,0 +1,53 @@
+@media (min-width: 1025px) {
+    .h-custom {
+    height: 100vh !important;
+    }
+}
+.create_pro_sec{
+    overflow: hidden;
+    padding-bottom: 50px;
+}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+.card-registration .select-arrow {
+    top: 13px;
+}
+/********************* tags section ******************/
+.label-info{
+    background-color:blue;
+    padding:1px;
+    border-radius:4px;
+}
+.tags {
+    width:50% !important;
+}
+/*******************ffdgfd**********************/
+.text {
+    background-color: white;
+    color: black;
+    font-size: 5vw; 
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+}
+body{
+    background-color: #98810a12;
+}
+.box{
+    box-shadow: 5px 5px #888888;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
