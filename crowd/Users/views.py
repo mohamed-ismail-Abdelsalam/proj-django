@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from Users.forms import *
 from Users.models import *
@@ -122,6 +122,14 @@ def home(request):
     userss['img'] = user.profile_img
     return render(request, "User/index.html",userss)
 
+
+def user_logout(request ):
+    try:
+        del request.session['user_id']
+        print("you are logged out " )
+    except KeyError:
+        print("you must login ")
+    return redirect("../../User/login/" )
 
 def activate(request, uidb64, token):
     msg = None
