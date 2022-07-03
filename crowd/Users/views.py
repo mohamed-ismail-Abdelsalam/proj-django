@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from Users.forms import *
-from Users.models import *
+# from Users.models import *
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import *
@@ -14,6 +14,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import smtplib
 from django.utils import timezone
+from  myapp.models import *
 
 
 # Create your views here.
@@ -117,10 +118,34 @@ def login(request):
 
 
 def home(request):
-    userss = {}
-    user = Register.objects.get(id=request.session['user_id'])
-    userss['img'] = user.profile_img
-    return render(request, "User/index.html",userss)
+    if 'user_id'  in request.session:
+        context = {}
+        projects_for_slide = project.objects.all()
+        projects = project.objects.all()
+        latest_5projects = project.objects.all()
+        context['projects_for_slide'] = projects_for_slide
+        context['projects'] = projects
+        context['latest_5projects'] = latest_5projects
+
+        user = Register.objects.get(id=request.session['user_id'])
+        context['img'] = user.profile_img
+        return render(request, "home.html",context)
+    else:
+        t = LoginForm()
+        trainers = {}
+        trainers['tr'] = t
+        return render(request, "User/sign-in.html", trainers)
+def pro(request):
+    if 'user_id'  in request.session:
+        context = {}
+        user = Register.objects.get(id=request.session['user_id'])
+        context['img'] = user.profile_img
+        return render(request, "User/Profile.html",context)
+    else:
+        t = LoginForm()
+        trainers = {}
+        trainers['tr'] = t
+        return render(request, "User/sign-in.html", trainers)
 
 
 def user_logout(request ):

@@ -8,6 +8,7 @@ urlpatterns = [
     path('register/', register),
     path('logout/', user_logout),
     path('login/', login),
+    path('profile/', pro),
     path('home/', home, name="home"),
     path('activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/',
          activate, name='activate'),
