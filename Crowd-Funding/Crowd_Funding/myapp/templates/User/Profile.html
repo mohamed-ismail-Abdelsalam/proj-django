@@ -1,0 +1,114 @@
+﻿{%extends 'base.html'%}
+{% load static %}
+{%block img%}
+{{img.url}}
+{%endblock%}
+
+{%block links%}
+     <link rel="stylesheet" href="{% static 'css/profile.css '%}"/>
+{%endblock%}
+
+
+
+     {%block content%}
+
+<script>
+var edit = true;
+function inputToggle(e) {
+  e.preventDefault();
+  $('#Edit input').prop('readonly', edit = !edit);
+}
+</script>
+<form id="Edit" enctype="multipart/form-data" method="post" action="../update/">
+{% csrf_token %}
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+                                                                                         src="..{{img.url}}" width="200" height="400">
+                <span class="text-black-50"><input type="file" name="pimage"/></span>
+                <span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile
+                        Settings</h4>
+                </div>
+                 <div class="row mt-3">
+                    <div class="contaner">
+                        <div class="col-md-6"><label class="labels">Firstname</label><input type="text"
+                                                                                               class="form-control"
+                                                                                               placeholder="Firstname "
+                                                                                               value="{{ firstname }}" name="firstname" readonly></div>
+
+                        <div class="col-md-6"><label class="labels">Lastname</label><input type="text"
+                                                                                            class="form-control"
+                                                                                            placeholder="Lastname"
+                                                                                            value="{{ lastname }}" name="lastname" readonly></div>
+                  </div>
+
+                </div>
+                <div class="row mt-3">
+                    <div class="contaner">
+                        <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="text"
+                                                                                               class="form-control"
+                                                                                               placeholder="enter phone number"
+                                                                                               value="{{ phone }}" name="phone" readonly></div>
+                    </div>
+                    <div class="contaner">
+                        <div class="col-md-12"><label class="labels">Email </label><input type="text"
+                                                                                            class="form-control"
+                                                                                            placeholder="Email"
+                                                                                            value="{{ email }}" name="email" readonly></div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="extra">
+                        <div class="col-md-12 "><label class="labels">Password</label><input type="password"
+                                                                                           class="form-control"
+                                                                                           placeholder="Password"
+                                                                                           value="dsaasdasdasdasd" readonly>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mt-5 text-center">
+                    <input type="submit" class="btn btn-primary " style="background-color:#95B484"  value="Save"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 align-items-center experience">
+            <div class="p-3 py-5 expTitle">
+                <div class="d-flex justify-content-between align-items-center experience">
+                    <span>Extra</span><input type="submit" onclick="inputToggle(event)" style="background-color: #95B484;color: white" class="border px-3 p-1 add-experience" value="Edit "/>
+                </div>
+                <div class="contaner">
+                    <div class="col-md-12"><label class="labels">Facebook</label><input type="text"
+                                                                                                       class="form-control"
+                                                                                                       placeholder="facebook"
+                                                                                                       value="{{ facebook }}" name="facebook" readonly></div>
+                </div>
+                <div class="contaner">
+                    <div class="col-md-12"><label class="labels">Birthdate</label><input type="Date"
+
+                                                                                                  class="form-control"
+                                                                                                  placeholder="Birthdate"
+                                                                                                  value="{{ birthdate }}" name="birthdate" readonly></div>
+                </div>
+                <div class="contaner">
+                    <div class="col-md-12"><label class="labels">Country</label><input type="text"
+                                                                                         class="form-control"
+                                                                                         placeholder="Country"
+                                                                                         value="{{ country }}" name="country" readonly></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</form>
+      {%endblock%}
+
+

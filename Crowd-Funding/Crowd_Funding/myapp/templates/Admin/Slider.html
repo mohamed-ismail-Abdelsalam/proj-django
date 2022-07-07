@@ -1,0 +1,96 @@
+{% extends 'Admin/tables.html' %}
+{% block content %}
+  <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Add Slider</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form action="../Admins/Slider" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Sldier Name</label>
+                            <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                        </div>
+                         <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Description</label>
+                            <input type="text" name="desc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Slider Image</label>
+                            <input type="file" name="slideimg" class="form-control" id="exampleInputPassword1">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container-fluid">
+
+
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Slider</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Description</th>
+                                            <th>Img</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                      {% for s in slider %}
+                                          <tr>
+                                            <td> {{ s.slider_name }}</td>
+                                            <td>{{ s.slider_describe }}</td>
+                                            <td>{{ s.slider_img }}</td>
+                                              <td><a class="btn btn-danger " href="../Admins/slider/delete/{{s.id}}">Delete</a></td>
+                                          </tr>
+                                      {% endfor %}
+
+
+
+
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary  btn-lg" data-toggle="modal" data-target="#myModal"> <span class="icon text-white-50">
+                        <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">Add Slider</span></button>
+                    <button type="submit" href="#" class="btn btn-primary btn-icon-split align-self-center">
+
+                    </button>
+                </div>
+
+{% endblock content %}

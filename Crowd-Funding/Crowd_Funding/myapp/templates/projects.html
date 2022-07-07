@@ -1,0 +1,194 @@
+{%extends 'base.html'%}
+{%block links%}
+  {% load static %}
+    <style>
+        .cause {
+            margin-bottom: 40px;
+            position: relative;
+            -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.8);
+        }
+        .cause h3{
+            height: 100px;
+            overflow: hidden;
+        }
+        .cause .cause-link {
+            display: block;
+            position: relative;
+        }
+
+        .cause h3 {
+            font-size: 26px !important;
+        }
+
+        .cause h3 a {
+            color: #000;
+        }
+
+        .cause .custom-progress-wrap {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .cause .custom-progress-wrap .custom-progress-inner {
+            height: 7px;
+            width: 100%;
+            background: #ccc;
+        }
+
+        .cause .custom-progress-wrap .custom-progress-inner .custom-progress {
+            background: #00a651;
+            height: 7px;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .cause .custom-progress-wrap .caption {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 12px;
+        }
+        .dropdown_coments{
+          min-width:500px;
+        }
+        .comments_drop{
+          display:flex;
+          margin-left:10px;
+        }
+
+    #hide_me{
+    visibility: visible !important;
+    }
+
+    </style>
+    <script
+      src="https://kit.fontawesome.com/8074abe3d2.js"
+      crossorigin="anonymous"
+    ></script>
+{%endblock%}
+{%block content%}
+  {% load static %}
+
+
+
+    <div class="container">
+      <div class="row">
+        {% for proj in projects %}
+          <div class="col-md-4">
+            <div class="cause shadow-sm">
+              <a href="#" class="cause-link d-block">
+                <!--but the image from data base instead of this one -->
+                <img src="https://i.postimg.cc/7Z1nWw7Y/pro-1.jpg" alt="Image" class="img-fluid" />
+                <div class="custom-progress-wrap">
+                  <span class="caption">80% complete</span>
+                  <div class="custom-progress-inner">
+                    <div
+                      class="custom-progress bg-danger"
+                      style="width: 80%"
+                    ></div>
+                  </div>
+                </div>
+              </a>
+
+              <div class="px-3 pt-3 border-top-0 border border shadow-sm">
+                <span
+                  class="badge bg-danger py-1 small px-2 rounded mb-3 d-inline-block"
+                  >{{ proj.title }}</span
+                >
+                <h3 class="mb-4">
+                  {{ proj.details}}
+                </h3>
+                <div class="border-top border-light border-bottom py-2 d-flex">
+                  <div>Donated</div>
+                  <div class="ml-auto">
+                    <strong class="text-primary">$32,919</strong>
+                  </div>
+                </div>
+                <div class="py-4 m-1 ">
+                  <div class="d-flex align-items-center">
+                    <!--but the image from data base instead of this one but this image for the project owner  -->
+                    <img
+                      src="https://i.postimg.cc/7Z1nWw7Y/pro-1.jpg"
+                      alt="Image"
+                      class="rounded-circle mr-3"
+                      width="50"
+                    />
+                    <div class="m-1"> {{ user.first_name }}</div>
+
+                      <div class=" dropdown m-3 ">
+                          <a class=" " href="#" role="button" id="dropdownMenuLinkreport" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-bug">report</i>
+                          </a>
+                              <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuLinkreport">
+                                <li>
+                                  <form method="post" action="/project/reports">
+                                      {% csrf_token %}
+                                        <input type="hidden" name="user_name" value= {{ user.first_name }}>
+                                        <input type="hidden" name="project_id" value={{ proj.id }}>
+                                        <div class="m-3">
+                                          <label >enter your comment</label>
+                                          <textarea name="Report_body" style="font-family:sans-serif;font-size:1.2em; overflow:hidden; width:90%">
+                                          </textarea>
+                                        </div>
+                                          <input class="m-3"type="submit" value="Submit">
+                                    </form>
+                                  </li>
+
+                              </ul>
+                      </div>
+                      <div class="dropdown  comments_drop">
+                          <a class=" " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-comment-dots">comment</i>
+                          </a>
+                          {% if not proj.comment.all %}
+                            <ul class=" dropdown-menu dropdown-menu-lg-end dropdown_coments" aria-labelledby="dropdownMenuLink" >
+                                <li>
+                                    <form method="post" action="/project/projects">
+                                      {% csrf_token %}
+                                        <input type="hidden" name="Comend_name" value= {{ user.first_name }}>
+                                        <input type="hidden" name="project_id" value={{ proj.id }}>
+                                        <div class="m-3">
+                                          <label >enter your comment</label>
+                                          <textarea name="comment_body" style="font-family:sans-serif;font-size:1.2em; overflow:hidden; width:90%">
+                                          </textarea>
+                                        </div>
+                                          <input class="m-3"type="submit" value="Submit">
+                                    </form>
+                                  </li>
+                              </ul>
+                          {% else %}
+
+                              <ul class="dropdown-menu dropdown-menu-lg-end dropdown_coments p-3" aria-labelledby="dropdownMenuLink ">
+                                {% for comment in proj.comment.all %}
+                                  <li style="font-size:20px;text-decoration:underline;margin:5px">{{ comment.Comend_name }}</li>
+                                  <li style="font-size:17px;border:1px solid black;height:80px;text-wrap:wrap;margin:5px 0px;padding:10px;border-radius:15px">{{ comment.comment_body }}</li>
+                                  <li class="border-bottom" style="font-size:11px; margin:5px">{{ comment.date_added }}</li>
+                                {% endfor %}
+                                <li>
+                                    <form method="post" action="/project/projects">
+                                      {% csrf_token %}
+                                        <input type="hidden" name="Comend_name" value= {{ user.first_name }}>
+                                        <input type="hidden" name="project_id" value={{ proj.id }}>
+                                        <div>
+                                          <label>enter your comment</label>
+                                          <textarea name="comment_body" class="mt-2" style="font-family:sans-serif;font-size:1.2em; overflow:hidden; width:100%">
+                                          </textarea>
+                                        </div>
+                                          <input class="mt-2" type="submit" value="Submit">
+                                    </form>
+                                  </li>
+                              </ul>
+                          {% endif %}
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+{%endblock%}

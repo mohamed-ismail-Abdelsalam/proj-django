@@ -1,0 +1,89 @@
+{% extends 'Admin/tables.html' %}
+{% block content %}
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Add Featuerd App</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form action="../Admins/Featured" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Projects </label>
+                            <select name="project" class="form-control">
+                                {% for  choice in Project %}
+                                    <option value="{{ choice.id }}">{{ choice.title }}</option>
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid">
+
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Featuerd</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+
+                            <th>id</th>
+                            <th>Project Title</th>
+                            <th>Action</th>
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {{ Project.title }}
+                        {% for s in pub %}
+                            <tr>
+                                <td> {{ s.id }}</td>
+                                <td> {{ s.pro.title}}</td>
+                                <td><a class="btn btn-danger " href="../Admins/Feat/delete/{{ s.id }}">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary  btn-lg" data-toggle="modal" data-target="#myModal2"> <span
+                class="icon text-white-50">
+                        <i class="fas fa-flag"></i>
+                    </span>
+            <span class="text">Add Slider</span></button>
+        <button type="submit" href="#" class="btn btn-primary btn-icon-split align-self-center">
+
+        </button>
+    </div>
+
+{% endblock content %}

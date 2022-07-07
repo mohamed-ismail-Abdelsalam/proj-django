@@ -14,7 +14,7 @@
     height:95%;
     z-index:0;
     border-radius: 0 0 50% 50%;
-    transform:translateX(-50%) rotate(0deg);
+    transform:translateX(50%) rotate(0deg);
 }
 #hero:before{
     content:'';
@@ -33,7 +33,7 @@
     height:95% !important;
     padding-bottom: 22px;
 }
-*--End of Hero---*/
+
 #projec_container {
     height:500px !important;
     overflow:hidden !important;
@@ -66,7 +66,7 @@
     text-transform: uppercase;
 }
 .project-item .text .des p{
-    font-weight: light;
+    font-weight: lighter;
     font-size:20px;
 }
 @media(min-width:992px){
@@ -96,3 +96,123 @@
     }
 }
 /*==========End of the Finished projects======*/
+/*======About Us=========*/
+.tabs .nav-pills .nav-item{
+    margin-bottom: 10px;
+}
+.tabs .nav-pills .nav-item .nav-link{
+    background:#fff;
+    border-radius:4px;
+    color:#000;
+    font-weight:bold;
+    border:1px solid rgba(20,54,1,0.6);
+    font-size:20px;
+    line-height: 30px;
+}
+.tabs .nav-pills .nav-item .nav-link span{
+    color:#053001;
+    font-size:30px;
+}
+.tabs .nav-pills .nav-item .nav-link.active{
+    color:#fff;
+    background:#053001;
+    border:1px solid #9ef596;
+}
+.tabs .nav-pills .nav-item .nav-link.active span{
+    color:#fff;
+}
+.tabs .tab-content{
+    background:#fff;
+    padding:0;
+}
+.tabs .tab-content .img{/*images-size for this section 1000 x 667 */
+    width:100%;
+    height:400px;
+    margin-bottom:20px;
+}
+.tabs .tab-content h3{
+    font-weight:bold;
+
+}
+.tabs .tab-content h3 a{
+    color:#000;
+}
+/*======End of About Us=========*/
+
+#hide_me{
+    visibility: hidden !important;
+}
+
+
+  .team{
+    background: #fff;
+    padding:60px 0 30px 0;
+}
+.team .team-1{
+    text-align:center;
+    margin-bottom:80px;
+    position:relative;
+}
+.team .team-1 .pic{
+    border-radius:4px;
+    overflow:hidden;
+}
+.team .team-1 img{
+    transition:all ease-in-out 0.4s;
+}
+.team .team-1:hover img{
+    transform:scale(1.1);
+}
+.team .team-1 .team-info{
+    position: absolute;
+    bottom:-48px;
+    left:20px;
+    right:20px;
+    background: linear-gradient(360deg,#b3f19b 0%,rgba(187,240,152,0.9)35%,
+    rgba(0,59,37,0.8)100%);
+    padding: 15px 0;
+    border-radius: 4px;
+}
+.team .team-1 h4{
+    font-weight: bold;
+    margin-bottom:10px;
+    font-size:16px;
+    color:#fff;
+    position: relative;
+    padding-bottom: 10px;
+}
+.team .team-1 h4:after{
+    content:"";
+    position: absolute;
+    display:block;
+    width:50px;
+    height:1px;
+    background: #1d3501;
+    bottom:0;
+    left: calc(50% - 25px);
+}
+.team .team-1 span{
+    font-style:italic;
+    display:block;
+    font-size: 13px;
+    color:#fff;
+}
+.team .team-1 .social{
+    margin-top: 15px;
+}
+.team .team-1 .social a{
+    transition: color 0.3s;
+    color:#01290d;
+}
+.team .team-1 .social a:hover{
+    color:#fff;
+}
+.team .team-1 .social i{
+    font-size:16px;
+    margin: 0 2px;
+}
+@media (max-width: 992px){
+    .team .team-1{
+        margin-bottom: 100px;
+    }
+}

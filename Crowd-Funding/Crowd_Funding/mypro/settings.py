@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
     'myapp',
     'taggit',
+    'Users',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
@@ -78,12 +78,12 @@ WSGI_APPLICATION = 'mypro.wsgi.application'
 
 DATABASES = {
     'default': {
-         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'djprotest',
-        'HOST':'localhost',
-        'USER':'postgres',
-        'PASSWORD':'123',
-        'PORT':5432,
+        'HOST': 'localhost',
+        'USER': 'shawke',
+        'PASSWORD': '',
+        'PORT': 5432,
     }
 }
 
@@ -128,5 +128,8 @@ STATICFIELS_DIRS=[
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/'
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
